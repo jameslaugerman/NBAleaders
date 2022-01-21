@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
-import PlayerCard from "./playerCard";
+import PlayerCard from "../components/playerCard";
 import styles from "../styles/Home.module.css";
 import Header from "./header";
 import Footer from "./footer";
-import fetchAPI from "./lib/api";
+import fetchAPI from "../components/api";
 
 const Home: any = ({ steph, demar, ja }: any) => {
 	return (

@@ -11,7 +11,6 @@ async function fetchAPI(url) {
 		console.error(json.errors);
 		throw new Error("Failed to fetch API");
 	}
-	console.log(json);
 	return json.data[0];
 }
 
