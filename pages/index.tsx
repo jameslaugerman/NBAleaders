@@ -1,23 +1,46 @@
-import type { NextPage } from "next";
-import PlayerCard from "./playerCard";
-import styles from "../styles/Home.module.css";
-import Header from "./header";
-import Footer from "./footer";
+import type { NextPage } from 'next';
+import PlayerCard from './playerCard';
+import styles from '../styles/Home.module.css';
+import Header from './header';
+import Footer from './footer';
+import { fetchAPI } from './lib/api';
 
-const Home: NextPage = () => {
-	return (
-		<div className={styles.container}>
-			<Header />
-			<main className={styles.main}>
-				<div className={styles.grid}>
-					<PlayerCard playerId={115} name={"Steph Curry"} />;
-					<PlayerCard playerId={125} name={"Demar DeRozan"} />;
-					<PlayerCard playerId={115} />;
-				</div>
-			</main>
-			<Footer />
-		</div>
-	);
+const Home: any = ({ steph, demar }: any) => {
+  return (
+    <div className={styles.container}>
+      <Header />
+      <main className={styles.main}>
+        <div className={styles.grid}>
+          <PlayerCard
+            pts={steph.pts}
+            ast={steph.ast}
+            reb={steph.reb}
+            img="/steph.jpeg"
+            name="Steph Curry"
+          />
+          <PlayerCard
+            pts={demar.pts}
+            ast={demar.ast}
+            reb={demar.reb}
+            img="/cryingjordan.jpeg"
+            name="Demar DeRozan"
+          />
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
 };
+
+export async function getStaticProps() {
+  const API_URL = (playerId: number) =>
+    `https://www.balldontlie.io/api/v1/season_averages?season=2021&player_ids[]=${playerId}`;
+
+  const steph = await fetchAPI(API_URL(115));
+  const demar = await fetchAPI(API_URL(125));
+  return {
+    props: { steph, demar },
+  };
+}
 
 export default Home;
