@@ -1,3 +1,9 @@
+# NBAleaders
+
+## all data sourced from https://www.balldontlie.io/#introduction
+
+## see it in production here: https://determined-newton-4deef1.netlify.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
