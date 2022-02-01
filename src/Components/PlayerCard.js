@@ -27,7 +27,7 @@ export default function PlayerCard(props) {
 				{post.map((player, i) => {
 					return (
 						<div key={i}>
-							<img src={props.img} alt="picture by Ringer"></img>
+							<img src={props.img} alt="Credit - theringer.com"></img>
 							<p>Games Played - {player.games_played}</p>
 							<p>PPG - {player.pts}</p>
 							<p>RPG - {player.reb}</p>
